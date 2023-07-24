@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - MonsterSponer
+  - CheckPoint2
+  - CheckPoint3
+  - CheckPoint4
+  - CheckPoint1
   layers:
   - Default
   - TransparentFX
