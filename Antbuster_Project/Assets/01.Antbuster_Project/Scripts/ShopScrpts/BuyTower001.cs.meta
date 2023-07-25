@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 097eacab5f392f34f802a438e568eed2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - canon001: {fileID: 4103170094510377833, guid: 0e043dbb04b2f3f439d980ec89cf5680, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,15 +12,15 @@ public class GameManager : MonoBehaviour
     public TMP_Text playerGoldText;
     public int Round = 1;
 
-    //레이가 맞았다는걸 알려줄 변수
-    RaycastHit rayHit;
-    //레이변수
-    Ray ray;
+    ////레이가 맞았다는걸 알려줄 변수
+    //RaycastHit rayHit;
+    ////레이변수
+    //Ray ray;
 
     public float loundTime = 10;
     //레이의 길이
     public float rayDistance;
-    public int playerGold = 0;
+    public int playerGold = 5000;
 
     public bool isNextRound = false;
     public bool isOnGold = false;
@@ -89,13 +89,14 @@ public class GameManager : MonoBehaviour
             //TODO : 게임 승리 
         }
 
-        ray.origin = this.transform.position;
-        ray.direction = this.transform.forward;
+        // LEGACY : Ray 시도 해본것
+        //ray.origin = this.transform.position;
+        //ray.direction = this.transform.forward;
 
-        if(Physics.Raycast(ray.origin,ray.direction,out rayHit,rayDistance))
-        {
-            Debug.Log(rayHit.collider.gameObject.name);
-        }
+        //if(Physics.Raycast(ray.origin,ray.direction,out rayHit,rayDistance))
+        //{
+        //    Debug.Log(rayHit.collider.gameObject.name);
+        //}
 
 
         RoundTime();

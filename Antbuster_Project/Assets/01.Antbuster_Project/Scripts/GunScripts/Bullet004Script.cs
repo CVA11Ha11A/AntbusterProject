@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet001Script : MonoBehaviour
+public class Bullet004Script : MonoBehaviour
 {
-    public float bulletSpeed = 3.0f;
-    public int bulletDamage = 50;
+    public float bulletSpeed = 5.0f;
+    public int bulletDamage = 30;
     public bool isHit = false;
 
-    public HeadMove classInTarget;
+    public Canon004 classInTarget;
 
 
     private GameObject target;
@@ -16,7 +16,7 @@ public class Bullet001Script : MonoBehaviour
 
     public void Awake()
     {
-        classInTarget = FindObjectOfType<HeadMove>();
+        classInTarget = FindObjectOfType<Canon004>();
         target = classInTarget.target;
     }
 
@@ -30,7 +30,7 @@ public class Bullet001Script : MonoBehaviour
 
         //transform.rotation = Quaternion.Euler(0,0,90);
         Invoke("MoreSpeed", 3f);
-        Destroy(gameObject,5f);
+        Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class Bullet001Script : MonoBehaviour
     {
         if (target != null || target != default)
         {
-            
+
             Vector3 dir = target.transform.position - this.transform.position;
             // Quaternion rot = Quaternion.LookRotation(dir.normalized);
             //transform.rotation = Quaternion.LookRotation(dir);
@@ -48,13 +48,18 @@ public class Bullet001Script : MonoBehaviour
 
             transform.LookAt(target.transform);
 
-            if(isHit == false)
+            if (isHit == false)
             {
                 transform.position += dir * bulletSpeed * Time.deltaTime;
             }
 
-            
-            
+            if (target == null || target == default)
+            {
+                Destroy(gameObject);
+            }
+
+
+
         }
 
         //transform.position += Vector3.positiveInfinity * bulletSpeed * Time.deltaTime;
@@ -71,20 +76,20 @@ public class Bullet001Script : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if(other.name == "Enemy_Warrio(Clone)")
-            { 
+            if (other.name == "Enemy_Warrio(Clone)")
+            {
                 WormEnemyControler enemyHit01 = other.GetComponent<WormEnemyControler>();
                 enemyHit01.enemyHp = enemyHit01.enemyHp - bulletDamage;
-                Destroy (gameObject);
-                
+                Destroy(gameObject);
+
             }
 
-            else if(other.name == "Enemy_Fly(Clone)")
+            else if (other.name == "Enemy_Fly(Clone)")
             {
                 FlyEnemyControler enemyHit02 = other.GetComponent<FlyEnemyControler>();
                 enemyHit02.enemyHp = enemyHit02.enemyHp - bulletDamage;
                 Destroy(gameObject);
-                Debug.Log("여기 계속 들어오나?");
+                //Debug.Log("여기 계속 들어오나?");
             }
         }
     }
