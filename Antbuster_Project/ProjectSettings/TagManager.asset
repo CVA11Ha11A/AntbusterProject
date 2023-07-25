@@ -9,6 +9,7 @@ TagManager:
   - CheckPoint3
   - CheckPoint4
   - CheckPoint1
+  - Enemy
   layers:
   - Default
   - TransparentFX

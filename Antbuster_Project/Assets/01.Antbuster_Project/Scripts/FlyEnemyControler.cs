@@ -8,12 +8,12 @@ public class FlyEnemyControler : MonoBehaviour
 
     public int checkPoint = 1;
 
-    public int flyEnemyHp = 50;
+    public int enemyHp = 50;
 
     public void Awake()
     {
         //라운드가 지날수록 몬스터의 HP가 늘어나게
-        flyEnemyHp = flyEnemyHp * GameManager.Instance.Round;
+        enemyHp = enemyHp * GameManager.Instance.Round;
     }
     // Start is called before the first frame update
     void Start()
@@ -80,7 +80,7 @@ public class FlyEnemyControler : MonoBehaviour
 
     public void EnemyDie()
     {
-        if (flyEnemyHp <= 0)
+        if (enemyHp <= 0)
         {
             Destroy(gameObject);
             GameManager.Instance.playerGold += 20;

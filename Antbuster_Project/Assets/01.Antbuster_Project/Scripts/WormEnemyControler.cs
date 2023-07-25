@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class WormEnemyControler : MonoBehaviour
 {
+    private GameObject bullet;
+
     public float wormSpeed = 1.0f;
 
     public int checkPoint = 1;
 
-    public int worriorEnemyHp = 100;
+    public int enemyHp = 100;
 
     public void Awake()
     {
-        worriorEnemyHp = worriorEnemyHp * GameManager.Instance.Round;
+        enemyHp = enemyHp * GameManager.Instance.Round;
     }
     // Start is called before the first frame update
     void Start()
@@ -51,11 +53,15 @@ public class WormEnemyControler : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, -90f, 0f);
             checkPoint = 4;
         }
+        else { /* Pass */ }
+
+    
+
     }
 
     public void EnemyDie()
     {
-        if (worriorEnemyHp <= 0)
+        if (enemyHp <= 0)
         {
             Destroy(gameObject);
             GameManager.Instance.playerGold += 20;
