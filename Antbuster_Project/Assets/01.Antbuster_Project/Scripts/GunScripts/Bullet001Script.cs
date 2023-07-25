@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bullet001Script : MonoBehaviour
 {
-    public float bulletSpeed = 70.0f;
+    public float bulletSpeed = 3.0f;
     public int bulletDamage = 50;
+    public bool isHit = false;
 
     public HeadMove classInTarget;
 
@@ -28,6 +29,8 @@ public class Bullet001Script : MonoBehaviour
         //Debug.LogFormat("타겟의 값이 잘 들어오는지 ->{0}   타겟의 이름 -> {1}", target.transform.position,target.name);
 
         //transform.rotation = Quaternion.Euler(0,0,90);
+        Invoke("MoreSpeed", 3f);
+        Destroy(gameObject,10f);
     }
 
     // Update is called once per frame
@@ -45,7 +48,11 @@ public class Bullet001Script : MonoBehaviour
 
             transform.LookAt(target.transform);
 
-            transform.position += dir * 3 * Time.deltaTime;
+            if(isHit == false)
+            {
+                transform.position += dir * bulletSpeed * Time.deltaTime;
+            }
+
             
             
         }
@@ -53,6 +60,11 @@ public class Bullet001Script : MonoBehaviour
         //transform.position += Vector3.positiveInfinity * bulletSpeed * Time.deltaTime;
 
 
+    }
+
+    public void MoreSpeed()
+    {
+        bulletSpeed = 10;
     }
 
     public void OnTriggerEnter(Collider other)

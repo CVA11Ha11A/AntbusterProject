@@ -34,7 +34,7 @@ public class ScreenSizeFix : MonoBehaviour
         Vector3 cameraSize = Vector3.zero;
         cameraSize.y = Camera.main.orthographicSize * 2.0f;
         cameraSize.x = cameraSize.y * Camera.main.aspect;
-        Debug.LogFormat("x = {0}, y = {1}", cameraSize.x, cameraSize.y);
+        //Debug.LogFormat("x = {0}, y = {1}", cameraSize.x, cameraSize.y);
 
         return cameraSize;
     }
@@ -58,11 +58,11 @@ public class ScreenSizeFix : MonoBehaviour
         // UI와 그래픽의 스케일을 조정합니다.
         transform.localScale = new Vector3(scale, scale, 1f);
 
-        Debug.LogFormat("Width ->{0} Height -> {1}",screenWidth,screenHeight);
-        Debug.LogFormat("WidthRatio = {0}, HeightRatio = {1}", widthRatio, heightRatio);
-        Debug.LogFormat("Scale = {0}", scale);
-        Debug.LogFormat("스크린 스케일 오차 : {0}, {1}, {2}", 
-            scale, devScrScaleRation, devScrScaleRation / scale);
+        //Debug.LogFormat("Width ->{0} Height -> {1}",screenWidth,screenHeight);
+        //Debug.LogFormat("WidthRatio = {0}, HeightRatio = {1}", widthRatio, heightRatio);
+        //Debug.LogFormat("Scale = {0}", scale);
+        //Debug.LogFormat("스크린 스케일 오차 : {0}, {1}, {2}", 
+           // scale, devScrScaleRation, devScrScaleRation / scale);
         gameObjs.transform.localScale *= devScrScaleRation / scale;
     }
 }

@@ -12,7 +12,7 @@ public class HeadMove : MonoBehaviour
 
     private GameObject bulletClone = default;
 
-    public float attackTime = 1;
+    public float attackTime = 0.1f;
     public float attackDelay = 0;
     
 
@@ -24,17 +24,13 @@ public class HeadMove : MonoBehaviour
         bulletClone = bullet;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Debug.LogFormat("타워의 값  포지션 -> {0}", transform.position);
-        //Debug.LogFormat("타겟의 이름 -> {0}", target.name);
 
         //아래 변수가 AttackTime 일때 공격하게 만들예정
         attackDelay += attackTime* Time.deltaTime;
@@ -60,18 +56,17 @@ public class HeadMove : MonoBehaviour
 
             //canonBody.transform.LookAt(other.transform);
         }
-        
-        //Debug.Log("콜라이더 Enter 들어오나?");
+               
     }
     public void OnTriggerStay(Collider other)
     {
+        // LEGACY :
         //Vector3 dir = other.transform.position - this.transform.position;
         //Debug.LogFormat("dir 값 -> {0} rotate 값 -> {1}", dir, this.transform.rotation);
 
         //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime);
 
-        //transform.LookAt(other.transform);
-        //Debug.Log("인식은 되나?");
+        //transform.LookAt(other.transform);       
 
         if (other.tag == "Enemy" && other.gameObject == target)
         {
@@ -82,11 +77,9 @@ public class HeadMove : MonoBehaviour
             {
                 bulletClone_ = Instantiate(bulletClone, gunPoint.transform.position, gameObject.transform.rotation);
                 attackDelay = 0;
-
-                //Debug.LogFormat("Bullet rotation: {0}", bulletClone_.transform.localRotation);
+                
             }
-
-            //Debug.LogFormat("오브젝트 이름 -> {0} 오브젝트 테그 -> {1}", other.name, other.tag);
+            
         }
     }
 
